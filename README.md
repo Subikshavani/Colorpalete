@@ -30,18 +30,29 @@ A full-stack Flask-based Color Palette Generator that extracts color palettes fr
 color_palate/
 │
 ├── backend/
+
 │   ├── static/
+
 │   │   ├── css/
+
 │   │   ├── js/
+
 │   │   ├── downloads/
+
 │   │   └── uploads/
 │   │
 │   ├── templates/
+
 │   │   ├── index.html
+
 │   │   ├── history.html
+
 │   │   ├── gradients.html
+
 │   │   ├── theme.html
+
 │   │   ├── brandkit.html
+
 │   │   └── details.html
 │   │
 │   ├── app.py
@@ -49,9 +60,13 @@ color_palate/
 │   └── database.db
 │
 ├── venv/
+
 ├── requirements.txt
+
 ├── README.md
+
 ├── palette.png
+
 └── backend.zip
 
 🧠 Tech Stack
