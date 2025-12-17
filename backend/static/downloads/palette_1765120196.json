@@ -1,0 +1,47 @@
+[
+    {
+        "rgb": [
+            19,
+            18,
+            24
+        ],
+        "hex": "#131218",
+        "complement": "#ecede7"
+    },
+    {
+        "rgb": [
+            19,
+            18,
+            26
+        ],
+        "hex": "#13121a",
+        "complement": "#ecede5"
+    },
+    {
+        "rgb": [
+            20,
+            36,
+            61
+        ],
+        "hex": "#14243d",
+        "complement": "#ebdbc2"
+    },
+    {
+        "rgb": [
+            21,
+            32,
+            54
+        ],
+        "hex": "#152036",
+        "complement": "#eadfc9"
+    },
+    {
+        "rgb": [
+            20,
+            19,
+            27
+        ],
+        "hex": "#14131b",
+        "complement": "#ebece4"
+    }
+]

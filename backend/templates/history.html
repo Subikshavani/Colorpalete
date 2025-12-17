@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PaletteLab 3D — History</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+/* ---------------------------------------------------------
+   GLOBAL BACKGROUND (same as index.html)
+------------------------------------------------------------ */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: #0d0d0d;
+  overflow-x: hidden;
+  perspective: 1000px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b, #1fa2ff, #12d8fa);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  filter: blur(35px);
+  opacity: .55;
+  z-index: -1;
+  transform: rotateX(25deg) rotateY(25deg) scale(1.4);
+}
+
+@keyframes gradientAnimation {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* ---------------------------------------------------------
+   NAVIGATION (same as index)
+------------------------------------------------------------ */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.25s ease;
+  font-weight: 600;
+}
+
+.nav a.brand {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  color: #ffeb3b;
+  transform: translateY(-3px) scale(1.08);
+}
+
+/* ---------------------------------------------------------
+   MAIN WRAPPER (Glass panel)
+------------------------------------------------------------ */
+.wrap {
+  width: 90%;
+  max-width: 1300px;
+  margin: 60px auto;
+  background: rgba(20,20,20,0.55);
+  border-radius: 22px;
+  padding: 35px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+  backdrop-filter: blur(14px);
+}
+
+h2 {
+  text-align: center;
+  text-shadow: 0 0 15px #ff4b2b;
+  margin-bottom: 10px;
+}
+.muted {
+  text-align: center;
+  opacity: .8;
+  margin-bottom: 35px;
+}
+
+/* ---------------------------------------------------------
+   SEARCH BAR + FILTERS with 3D Inputs
+------------------------------------------------------------ */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.controls input,
+.controls select {
+  padding: 12px 15px;
+  background: rgba(30,30,30,0.8);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+
+.controls input:hover,
+.controls select:hover {
+  transform: translateY(-4px) rotateX(4deg) rotateY(3deg);
+}
+
+/* Buttons (same style as index.html) */
+.btn {
+  padding: 12px 25px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  transition: 0.3s;
+}
+.btn:hover {
+  transform: translateY(-5px) rotateX(6deg) rotateY(6deg) scale(1.05);
+}
+
+/* Danger Button */
+.btn-danger {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+/* ---------------------------------------------------------
+   CARD GRID (Palette items)
+------------------------------------------------------------ */
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.7);
+  transform-style: preserve-3d;
+  transition: 0.35s cubic-bezier(.2,.9,.3,1);
+  backdrop-filter: blur(10px);
+}
+.card:hover {
+  transform: translateY(-12px) rotateX(8deg) rotateY(8deg);
+  box-shadow: 0 30px 70px rgba(0,0,0,0.85);
+}
+
+/* Preview image */
+.card-preview {
+  height: 160px;
+  background: #222;
+}
+.card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card body */
+.card-body {
+  padding: 15px;
+}
+
+.filename {
+  font-weight: bold;
+  color: #fff;
+}
+
+.meta {
+  color: #ddd;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Action Buttons under each card */
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card-actions a,
+.card-actions button {
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #43cea2, #185a9d);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  transition: 0.3s;
+}
+
+.card-actions a:hover,
+.card-actions button:hover {
+  transform: translateY(-5px) rotateX(5deg) rotateY(4deg);
+}
+
+.card-actions .danger {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+/* Empty message */
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #ccc;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  margin-top: 30px;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="/">PaletteLab 3D</a>
+  <div class="nav-links">
+    <a href="/gradients">Gradients</a>
+    <a href="/theme">Theme</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <h2>Saved Palettes</h2>
+  <p class="muted">Browse and manage your generated color palettes</p>
+
+  <!-- SEARCH & FILTERS -->
+  <div class="controls">
+    <input id="searchInput" placeholder="Search filename…" />
+    <input id="colorInput" type="color" style="padding:0; width:55px; height:55px;" />
+    <select id="sortSelect">
+      <option value="new">Sort: Latest</option>
+      <option value="old">Sort: Oldest</option>
+    </select>
+
+    <button class="btn" onclick="loadHistory()">Search</button>
+    <button class="btn btn-danger" onclick="resetFilters()">Reset</button>
+  </div>
+
+  <!-- RESULT GRID -->
+  <div id="historyList" class="history-grid"></div>
+  <div id="emptyNotice" class="empty" style="display:none;">No palettes found</div>
+</main>
+
+<script>
+/* Load history dynamically */
+async function loadHistory(){
+  const q = searchInput.value;
+  const color = colorInput.value;
+  const sort = sortSelect.value;
+
+  const res = await fetch(`/api/palettes?search=${encodeURIComponent(q)}&color=${encodeURIComponent(color)}`);
+  const json = await res.json();
+
+  const list = document.getElementById('historyList');
+  list.innerHTML = '';
+
+  let items = json.palettes || [];
+
+  // Sorting
+  items.sort((a,b)=>{
+    if(sort==="new") return new Date(b.created_at) - new Date(a.created_at);
+    return new Date(a.created_at) - new Date(b.created_at);
+  });
+
+  if(items.length === 0){
+    emptyNotice.style.display = 'block';
+    return;
+  } else {
+    emptyNotice.style.display = 'none';
+  }
+
+  items.forEach(p => {
+    list.innerHTML += `
+      <div class="card">
+        <div class="card-preview">
+          ${p.png_url ? `<img src="${p.png_url}">` : ""}
+        </div>
+
+        <div class="card-body">
+          <div class="filename">${p.filename}</div>
+          <div class="meta">${new Date(p.created_at).toLocaleString()}</div>
+
+          <div class="card-actions">
+            <a href="/details/${p.id}">View</a>
+            <a href="${p.json_url}" download>JSON</a>
+            ${p.png_url ? `<a href="${p.png_url}" download>PNG</a>` : ""}
+            <button class="danger" onclick="deletePalette(${p.id})">Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+async function deletePalette(id){
+  if(!confirm("Delete this palette?")) return;
+  const res = await fetch(`/delete/${id}`, { method:"POST" });
+  const json = await res.json();
+  if(json.success) loadHistory();
+}
+
+function resetFilters(){
+  searchInput.value = "";
+  colorInput.value = "#000000";
+  sortSelect.value = "new";
+  loadHistory();
+}
+
+loadHistory();
+</script>
+
+</body>
+</html>

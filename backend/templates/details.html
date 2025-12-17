@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Palette Details</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+<nav class="nav">
+  <a class="brand" href="/">PaletteLab</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/history">History</a>
+    <a href="/theme">Theme Generator</a>
+  </div>
+</nav>
+
+<main class="wrap glass">
+  <h2>Palette Details</h2>
+  <p class="muted">Palette from file: <strong>{{ filename }}</strong> — created {{ created_at }}</p>
+
+  <div class="detail-row">
+
+    <div class="detail-column">
+      <h3>Colors</h3>
+      <div class="palette-grid">
+        {% for c in palette %}
+          <div class="color-card" data-bg="{{ c.hex }}">
+            <div class="color-label">{{ c.hex }}</div>
+            <div class="color-small">RGB: {{ c.rgb }}</div>
+            <div class="color-small">Comp: {{ c.complement_hex }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="detail-column">
+      <h3>Average</h3>
+
+      <div class="avg-box" data-bg="{{ average_hex }}"></div>
+
+      <p><strong>Average RGB:</strong> {{ average }}</p>
+
+      <p>
+        <a href="/download/json/{{ pid }}"><button>Download JSON</button></a>
+        <a href="/download/png/{{ pid }}"><button>Download PNG</button></a>
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-bg]").forEach(el => {
+        el.style.background = el.dataset.bg;
+    });
+});
+</script>
+
+</body>
+</html>

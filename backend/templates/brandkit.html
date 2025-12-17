@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brand Kit Generator</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    color: #fff;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.kit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.colors {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.swatch {
+    height: 120px;
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.preview {
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.preview nav {
+    background: var(--primary);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.preview button {
+    border: none;
+    padding: 12px 22px;
+    border-radius: 14px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.download {
+    display: block;
+    margin: 40px auto;
+    width: 220px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎨 Brand Kit Generator</h1>
+
+<div class="kit">
+
+    <!-- Colors -->
+    <div class="colors" id="colorContainer">
+        <!-- JS will populate swatches here -->
+    </div>
+
+    <!-- Preview -->
+    <div class="preview"
+         id="preview"
+         data-bg=""
+         data-text=""
+         data-primary=""
+         data-accent=""
+         data-secondary="">
+        <nav>Brand Name</nav>
+        <button id="btn1">Primary</button>
+        <button id="btn2">Secondary</button>
+        <div class="card">
+            <h3>Sample Card</h3>
+            <p>This UI adapts automatically.</p>
+        </div>
+    </div>
+
+</div>
+
+<a class="download" href="/history">← Back</a>
+
+<script type="application/javascript">
+    // Parse brand object from Flask
+    const brand = JSON.parse('{{ brand|tojson|safe }}');
+
+    // Populate color swatches
+    const colorContainer = document.getElementById("colorContainer");
+    for (const [name, color] of Object.entries(brand)) {
+        const div = document.createElement("div");
+        div.className = "swatch";
+        div.style.backgroundColor = color;
+        div.innerHTML = `<strong>${name.charAt(0).toUpperCase()+name.slice(1)}</strong><br><small>${color}</small>`;
+        div.onclick = () => {
+            navigator.clipboard.writeText(color);
+            alert(color + " copied!");
+        };
+        colorContainer.appendChild(div);
+    }
+
+    // Set preview colors dynamically
+    const p = document.getElementById("preview");
+    p.style.setProperty("--bg", brand.background);
+    p.style.setProperty("--text", brand.text);
+    p.style.setProperty("--primary", brand.primary);
+    p.style.setProperty("--accent", brand.accent);
+    p.style.setProperty("--secondary", brand.secondary);
+
+    document.getElementById("btn1").style.backgroundColor = brand.accent;
+    document.getElementById("btn2").style.backgroundColor = brand.secondary;
+</script>
+
+</body>
+</html>

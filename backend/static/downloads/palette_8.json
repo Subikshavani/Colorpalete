@@ -1,0 +1,44 @@
+{
+  "id": 8,
+  "filename": "img2.jpg",
+  "palette": [
+    {
+      "rgb": [
+        19,
+        18,
+        24
+      ],
+      "hex": "#131218",
+      "complement_rgb": [
+        236,
+        237,
+        231
+      ],
+      "complement_hex": "#ecede7",
+      "count": 431
+    },
+    {
+      "rgb": [
+        19,
+        18,
+        26
+      ],
+      "hex": "#13121a",
+      "complement_rgb": [
+        236,
+        237,
+        229
+      ],
+      "complement_hex": "#ecede5",
+      "count": 69
+    }
+  ],
+  "average": {
+    "rgb": [
+      49,
+      95,
+      128
+    ],
+    "hex": "#315f80"
+  }
+}

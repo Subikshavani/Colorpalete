@@ -1,0 +1,89 @@
+{
+  "id": 9,
+  "filename": "img2.jpg",
+  "palette": [
+    {
+      "rgb": [
+        19,
+        18,
+        24
+      ],
+      "hex": "#131218",
+      "complement_rgb": [
+        236,
+        237,
+        231
+      ],
+      "complement_hex": "#ecede7",
+      "count": 431
+    },
+    {
+      "rgb": [
+        19,
+        18,
+        26
+      ],
+      "hex": "#13121a",
+      "complement_rgb": [
+        236,
+        237,
+        229
+      ],
+      "complement_hex": "#ecede5",
+      "count": 69
+    },
+    {
+      "rgb": [
+        20,
+        36,
+        61
+      ],
+      "hex": "#14243d",
+      "complement_rgb": [
+        235,
+        219,
+        194
+      ],
+      "complement_hex": "#ebdbc2",
+      "count": 52
+    },
+    {
+      "rgb": [
+        21,
+        32,
+        54
+      ],
+      "hex": "#152036",
+      "complement_rgb": [
+        234,
+        223,
+        201
+      ],
+      "complement_hex": "#eadfc9",
+      "count": 51
+    },
+    {
+      "rgb": [
+        20,
+        19,
+        27
+      ],
+      "hex": "#14131b",
+      "complement_rgb": [
+        235,
+        236,
+        228
+      ],
+      "complement_hex": "#ebece4",
+      "count": 50
+    }
+  ],
+  "average": {
+    "rgb": [
+      49,
+      95,
+      128
+    ],
+    "hex": "#315f80"
+  }
+}

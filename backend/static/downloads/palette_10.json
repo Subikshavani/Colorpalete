@@ -1,0 +1,89 @@
+{
+  "id": 10,
+  "filename": "l1.jpg",
+  "palette": [
+    {
+      "rgb": [
+        32,
+        53,
+        45
+      ],
+      "hex": "#20352d",
+      "complement_rgb": [
+        223,
+        202,
+        210
+      ],
+      "complement_hex": "#dfcad2",
+      "count": 6
+    },
+    {
+      "rgb": [
+        0,
+        0,
+        0
+      ],
+      "hex": "#000000",
+      "complement_rgb": [
+        255,
+        255,
+        255
+      ],
+      "complement_hex": "#ffffff",
+      "count": 5
+    },
+    {
+      "rgb": [
+        2,
+        1,
+        1
+      ],
+      "hex": "#020101",
+      "complement_rgb": [
+        253,
+        254,
+        254
+      ],
+      "complement_hex": "#fdfefe",
+      "count": 5
+    },
+    {
+      "rgb": [
+        0,
+        14,
+        8
+      ],
+      "hex": "#000e08",
+      "complement_rgb": [
+        255,
+        241,
+        247
+      ],
+      "complement_hex": "#fff1f7",
+      "count": 5
+    },
+    {
+      "rgb": [
+        16,
+        18,
+        17
+      ],
+      "hex": "#101211",
+      "complement_rgb": [
+        239,
+        237,
+        238
+      ],
+      "complement_hex": "#efedee",
+      "count": 4
+    }
+  ],
+  "average": {
+    "rgb": [
+      124,
+      95,
+      65
+    ],
+    "hex": "#7c5f41"
+  }
+}

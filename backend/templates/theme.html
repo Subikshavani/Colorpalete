@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Theme Generator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.wrap {
+  padding: 20px;
+}
+
+input[type="color"] {
+  width: 60px;
+  height: 50px;
+  border: none;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(90deg, #43cea2, #185a9d);
+  margin: 5px;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#preview {
+  margin-top: 20px;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.5s ease;
+}
+
+.codeblock {
+  background: #222;
+  color: #0f0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-family: monospace;
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="/">PaletteLab</a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/history">History</a>
+    <a href="/gradients">Gradients</a>
+  </div>
+</nav>
+
+<main class="wrap glass">
+  <h2>Theme Generator</h2>
+  <p class="muted">Pick primary and secondary colors for your custom theme.</p>
+
+  <div id="themeColors">
+    <input type="color" id="primary" value="#3498db">
+    <input type="color" id="secondary" value="#2ecc71">
+  </div>
+
+  <button id="applyTheme">Apply Theme</button>
+  <button id="copyTheme">Copy CSS</button>
+
+  <div id="preview">Theme Preview</div>
+  <pre id="cssCode" class="codeblock"></pre>
+</main>
+
+<script>
+const preview = document.getElementById('preview');
+const cssCode = document.getElementById('cssCode');
+
+document.getElementById('applyTheme').addEventListener('click', () => {
+  const primary = document.getElementById('primary').value;
+  const secondary = document.getElementById('secondary').value;
+  preview.style.background = `linear-gradient(135deg, ${primary}, ${secondary})`;
+  cssCode.textContent = `background: linear-gradient(135deg, ${primary}, ${secondary});`;
+});
+
+document.getElementById('copyTheme').addEventListener('click', () => {
+  navigator.clipboard.writeText(cssCode.textContent)
+    .then(() => alert("CSS copied!"));
+});
+</script>
+</body>
+</html>

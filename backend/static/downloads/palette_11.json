@@ -1,0 +1,89 @@
+{
+  "id": 11,
+  "filename": "logo.jpg",
+  "palette": [
+    {
+      "rgb": [
+        254,
+        169,
+        24
+      ],
+      "hex": "#fea918",
+      "complement_rgb": [
+        1,
+        86,
+        231
+      ],
+      "complement_hex": "#0156e7",
+      "count": 544
+    },
+    {
+      "rgb": [
+        220,
+        145,
+        20
+      ],
+      "hex": "#dc9114",
+      "complement_rgb": [
+        35,
+        110,
+        235
+      ],
+      "complement_hex": "#236eeb",
+      "count": 464
+    },
+    {
+      "rgb": [
+        249,
+        167,
+        21
+      ],
+      "hex": "#f9a715",
+      "complement_rgb": [
+        6,
+        88,
+        234
+      ],
+      "complement_hex": "#0658ea",
+      "count": 342
+    },
+    {
+      "rgb": [
+        234,
+        156,
+        22
+      ],
+      "hex": "#ea9c16",
+      "complement_rgb": [
+        21,
+        99,
+        233
+      ],
+      "complement_hex": "#1563e9",
+      "count": 330
+    },
+    {
+      "rgb": [
+        252,
+        167,
+        22
+      ],
+      "hex": "#fca716",
+      "complement_rgb": [
+        3,
+        88,
+        233
+      ],
+      "complement_hex": "#0358e9",
+      "count": 327
+    }
+  ],
+  "average": {
+    "rgb": [
+      222,
+      148,
+      23
+    ],
+    "hex": "#de9417"
+  }
+}
